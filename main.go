@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/lufred/Proxy_Crawler/getter"
+	"github.com/weaming/proxy-crawler/getter"
 )
 
 func main() {

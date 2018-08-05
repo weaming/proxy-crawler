@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/lufred/Proxy_Crawler/storage"
 	"github.com/weaming/golib/fs"
+	"github.com/weaming/proxy-crawler/storage"
 )
 
 func KDL() {
@@ -37,7 +37,7 @@ func analysisHTML(res *http.Response) {
 		td := s.Find("td")
 		port, err := strconv.Atoi(td.Nodes[1].FirstChild.Data)
 		if err != nil {
-			return
+			panic(err)
 		}
 
 		ipModel := storage.NewIP()
