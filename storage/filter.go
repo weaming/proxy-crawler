@@ -24,10 +24,10 @@ func IsValidIP(ip *IP) bool {
 	println(proxyURL)
 
 	for i := 0; i < 3; i++ {
-		if proxy.IsValidProxy("https://www.douban.com", proxyURL, 200) {
+		if proxy.IsValidProxy("https://www.douban.com", proxyURL, 200, 3) {
 			return true
 		}
-		time.Sleep(5 * time.Second)
+		time.Sleep(500 * time.Millisecond)
 	}
 	return false
 }
