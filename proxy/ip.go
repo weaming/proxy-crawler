@@ -1,4 +1,4 @@
-package storage
+package proxy
 
 type IP struct {
 	IP       string `bson:"ip" json:"ip"`

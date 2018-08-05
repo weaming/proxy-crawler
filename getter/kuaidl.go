@@ -9,7 +9,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/weaming/golib/fs"
-	"github.com/weaming/proxy-crawler/storage"
+	"github.com/weaming/proxy-crawler/proxy"
 )
 
 func KDL() {
@@ -40,12 +40,12 @@ func analysisHTML(res *http.Response) {
 			panic(err)
 		}
 
-		ipModel := storage.NewIP()
+		ipModel := proxy.NewIP()
 		ipModel.IP = td.Nodes[0].FirstChild.Data
 		ipModel.Port = port
 		ipModel.Protocol = td.Nodes[3].FirstChild.Data
 
-		if storage.IsValidIP(ipModel) {
+		if proxy.IsValidIP(ipModel) {
 			ipModel.Usable = true
 			saveToJson(ipModel)
 		} else {
@@ -54,11 +54,11 @@ func analysisHTML(res *http.Response) {
 	})
 }
 
-func saveToJson(ipModel *storage.IP) {
+func saveToJson(ipModel *proxy.IP) {
 	b, err := json.Marshal(ipModel)
 	fatalErr(err)
 	text := string(b)
-	fs.AppendToFile("crawler.txt", text)
+	fs.AppendToFile("proxies.txt", text)
 }
 
 func fatalErr(err error) {

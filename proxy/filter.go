@@ -1,4 +1,4 @@
-package storage
+package proxy
 
 import (
 	"strconv"
@@ -20,8 +20,6 @@ func IsValidIP(ip *IP) bool {
 	if proxyURL == "" {
 		return false
 	}
-
-	println(proxyURL)
 
 	for i := 0; i < 3; i++ {
 		if proxy.IsValidProxy("https://www.douban.com", proxyURL, 200, 3) {
