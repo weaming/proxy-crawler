@@ -22,7 +22,7 @@ func KDL() {
 			return
 		}
 		log.Printf("%v %v\n", currentPullURL, resp.Status)
-		go analysisHTML(resp)
+		analysisHTML(resp)
 		time.Sleep(1 * time.Second)
 	}
 }
